@@ -7,7 +7,6 @@
   <link rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=monospace" rel="stylesheet">
   <meta name="Author" content="P">
-  <meta name="copyright" content="">
   <meta name="description" content="" />
   <meta http-equiv="cache-control" content="index,cache">
   <meta http-equiv="pragma" content="index,cache">
@@ -54,33 +53,46 @@
       let response = await fetch('https://api.ipify.org?format=json');
       let data = await response.json();
       let ip = data.ip;
-      document.getElementById('ip-address').innerHTML = ': ' + ;
+      document.getElementById('ip-address').innerHTML = 'IP Address: ' + ip;
     } catch (error) {
-      console.error('Error fetching  address:', error);
+      console.error('Error fetching IP address:', error);
+      document.getElementById('ip-address').innerHTML = 'Error fetching IP address.';
     }
   }
 
-  document.addEventListener('DOMContentLoaded', fetchIP);
+  async function fetchIPInfo() {
+    try {
+      let response = await fetch('https://ipinfo.io/json');
+      let data = await response.json();
+      const { ip, country, city, region } = data;
+      const dateTime = new Date().toLocaleString();
+      document.getElementById('ip-details').innerHTML = `IP: ${ip}<br>Country: ${country}<br>City: ${city}<br>Region: ${region}<br>Date & Time: ${dateTime}`;
+    } catch (error) {
+      console.error('Error fetching IP info:', error);
+      document.getElementById('ip-details').innerHTML = 'Error fetching IP info.';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    fetchIP();
+    fetchIPInfo();
+  });
 </script>
 <body onclick="playSound()" onmouseover="playSound()">
   <video class="bg-video" autoplay loop muted>
-    <source src="https://cdn.discordapp.com/attachments/1304080459814146079/1304758244509749248/ssstik.io_vf_56_r_1731148999884.mp4?ex=67308e4e&is=672f3cce&hm=5eee3a485545af0ddaadc985b95db171a9e4295c14018bca909802c8c3435688&">
+    <source src="https://cdn.discordapp.com/attachments/1320094332534919261/1320348531814301747/hdw---------2013full.mp4?ex=676945e4&is=6767f464&hm=eb7289b909ebb721402318cbc29c69e46c78ec60c8eeb06d2a4f61cb3108b7b2&">
     Your browser does not support the video tag.
   </video>
-  <audio src="https://cdn.discordapp.com/attachments/1304080459814146079/1304758244509749248/ssstik.io_vf_56_r_1731148999884.mp4?ex=67308e4e&is=672f3cce&hm=5eee3a485545af0ddaadc985b95db171a9e4295c14018bca909802c8c3435688&" autoplay loop></audio>
+  <audio src="https://cdn.discordapp.com/attachments/1320094332534919261/1320348531814301747/hdw---------2013full.mp4?ex=676945e4&is=6767f464&hm=eb7289b909ebb721402318cbc29c69e46c78ec60c8eeb06d2a4f61cb3108b7b2&" autoplay loop></audio>
   <div class="content">
     <center>
-      <h1 class="-display"><font color="#f30404" size="6">  لا لي الهلوين </font></h1>
+      <h1 class="-display"><font color="#f30404" size="6">  صلو على الحبيب </font></h1>
       <p class="-display"><b><font color="#c9cdd2" size="3px"></font></b></p>
-<a href="لا للهلوين" style="font-size: 20px; color: rgb(221, 4, 4); text-decoration: none;">لا للهلوين</a>
-
-
-
-
-
+      <a href="لا للهلوين" style="font-size: 20px; color: rgb(221, 4, 4); text-decoration: none;">Team G A N G S</a>
       <br>
       <div class="ip-display" id="clock"></div>
-      <div id="ip-address" style="color:#ff0000; margin-top: 5px;"></div> صل على الحبيب قلبك يطيب
+      <div id="ip-address" style="color:#ff0000; margin-top: 5px;"></div>
+      <div id="ip-details" style="color:#ff0000; margin-top: 5px;"></div>
       <script type="text/javascript">
         function showTime() {
           var a_p = "";
@@ -104,29 +116,23 @@
           document.getElementById('clock').innerHTML = curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
         }
 
+        function checkTime(i) {
+          if (i < 10) {
+            i = "0" + i;
+          }
+          return i;
+        }
 
-
-       </script>
-<marquee>
-              <font size="10">
-                <b></b> اطردو الزنادقة من جزيرة العرب
-                <b></b>
-                <b></b>
-                <b></b> اطردو المزوخين من جزيرة العرب
-            </marquee>
-          </div>
-      </td>
-    </table>
-
-<script>
-   fetch('https://ipinfo.io/json')
-    .then(response => response.json())
-    .then(data => {
-      const { i, country, city, region } = data;
-      const dateTime = new Date().toLocaleString();
-      const webhookUrl = '-';
-      fetch(webhookUrl, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({content: ` : ${}\nCountry & City : ${country} - ${city}\nDate & Time : ${dateTime}\n -`})
-      });
+        setInterval(showTime, 1000);
+      </script>
+      <marquee>
+        <font size="10">
+          <b></b> https://discord.gg/kGawjArC
+          <b></b> حياكم الله ديسكورد 
+          <b></b>
+        </font>
+      </marquee>
+    </center>
+  </div>
+</body>
+</html>
